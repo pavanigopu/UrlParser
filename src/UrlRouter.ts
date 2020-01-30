@@ -41,6 +41,8 @@ export async function parseUrl(req: Request, res: Response, _next: NextFunction)
 }
 
 export async function fetchValidDomains() {
+  // Getting list of valid domains from IANA 
+  // Ref: https://www.icann.org/resources/pages/tlds-2012-02-25-en
   const validDomainsText = (await getText("http://data.iana.org/TLD/tlds-alpha-by-domain.txt")) as string;
   validDomains = validDomainsText.split(/\r?\n/).map(s => s.toLowerCase());
 }
